@@ -11,8 +11,7 @@
 
 function getEmailDomain(emailAdress) {
     const domainStart = emailAdress.indexOf("@");
-    const domainName = emailAdress.substring(domainStart + 1, emailAdress.length);
-    return domainName;
+    return emailAdress.substring(domainStart + 1, emailAdress.length);
 }
 
 
@@ -51,3 +50,20 @@ console.log(typeOfEmail("t.mellink@novi.nl"));
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+const checkEmailValidity = (emailAdress) => {
+    if (emailAdress.includes("@")
+        && !emailAdress.includes(",")
+        && emailAdress.indexOf(".") !== emailAdress.length) {
+        return emailAdress + " is true";
+    } else {
+        return emailAdress + " is false";
+    }
+}
+
+console.log(checkEmailValidity("n.eeken@novi.nl"))
+console.log(checkEmailValidity("tessmellink@novi.nl"))
+console.log(checkEmailValidity("n.eekenanovi.nl"))
+console.log(checkEmailValidity("n.eeken@novinl."))
+console.log(checkEmailValidity("tessmellink@novi,nl"))
+
